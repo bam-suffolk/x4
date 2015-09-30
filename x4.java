@@ -1,5 +1,5 @@
 int r,g,b;
-float buttonX=200, buttonY=250, buttonW=80, buttonH=40;
+float buttonX=200, buttonY=250, buttonW=80, buttonH=60;
 int counter=0;
 
 //// SETUP:  size only.  Also set colors.
@@ -16,12 +16,13 @@ void draw() {
   background( r,g,b );
   showButton( buttonX, buttonY, buttonW, buttonH );
   fill(255,110,0);
-  text( "Change", buttonX+buttonW/4, buttonY+buttonH*2/3 );
+  text( "Change", width/2-20, height/2+5 );
 }
 // Draw the button.
 void showButton( float x, float y, float w, float h ) {
   fill( 0,0,255 );
-  rect ( x,y, w,h );
+  rectMode(CENTER);
+  rect ( width/2,height/2, w,h );
 }
 /// HANDLERS:  keys & click
 void keyPressed() {
@@ -29,7 +30,7 @@ void keyPressed() {
   if (key == 'r') reset();
 }
 void mousePressed() {
-  if ( hit( mouseX,mouseY, width/2,height/2, 50,50 ) ) {
+  if ( hit( mouseX,mouseY, width/2,height/2, 40,30 ) ) {
     counter=  counter+1;
     if (counter % 2 > 0) {
       r=  0;
