@@ -35,9 +35,10 @@ void mousePressed() {
   if ( hit( mouseX,mouseY, width/2,height/2, 40,30 ) ) {
     counter=  counter+1;
     if (counter % 2 > 0) {
-      r=  0;
-      g=  255;
-      b=  255;
+      background(random(0,255),random(0,255),random(0,255));
+      //r=  0;
+      //g=  255;
+      //b=  255;
     } else {
       reset();
     }
