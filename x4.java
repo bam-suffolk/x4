@@ -6,6 +6,8 @@ int counter=0;
 void setup() {
   size( 500, 500 );
   reset();
+  noStroke();
+  rectMode(CENTER);
 }
 void reset() {
   r=  255;
@@ -16,12 +18,12 @@ void draw() {
   background( r,g,b );
   showButton( buttonX, buttonY, buttonW, buttonH );
   fill(255,110,0);
-  text( "Change", width/2-20, height/2+5 );
+  textSize(20);
+  text( "Change", width/2-37, height/2+7 );
 }
 // Button.
 void showButton( float x, float y, float w, float h ) {
   fill( 0,0,255 );
-  rectMode(CENTER);
   rect ( width/2,height/2, w,h );
 }
 //keys & click
