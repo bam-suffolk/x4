@@ -4,7 +4,7 @@ int counter=0;
 
 //size and colors
 void setup() {
-  size( 500, 500 );
+  size( 500, 500,P3D );
   reset();
   noStroke();
   rectMode(CENTER);
@@ -19,7 +19,15 @@ void draw() {
   showButton( buttonX, buttonY, buttonW, buttonH );
   fill(255,110,0);
   textSize(20);
-  text( "Change", width/2-37, height/2+7 );
+  text( "Change ^", width/2-37, height/2+70 );
+  float dirY = (mouseY / float(height) - 0.5) * 2;
+  float dirX = (mouseX / float(width) - 0.5) * 3;
+   directionalLight(204, 204, 204, -dirX, -dirY, -1);
+   translate(250,100,0); 
+   fill(255); 
+   sphere(30);
+   fill(255,110,0);
+   sphere(50);
 }
 // Button.
 void showButton( float x, float y, float w, float h ) {
