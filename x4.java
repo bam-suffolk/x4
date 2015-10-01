@@ -1,4 +1,4 @@
-int r,g,b;
+float r,g,b;
 float buttonX=200, buttonY=250, buttonW=80, buttonH=60;
 int counter=0;
 
@@ -35,12 +35,13 @@ void mousePressed() {
   if ( hit( mouseX,mouseY, width/2,height/2, 40,30 ) ) {
     counter=  counter+1;
     if (counter % 2 > 0) {
-      background(random(0,255),random(0,255),random(0,255));
-      //r=  0;
-      //g=  255;
-      //b=  255;
+      r=  random(255);
+      g=  random(255);
+      b=  random(255);
     } else {
-      reset();
+      r=  random(255);
+      g=  random(255);
+      b=  random(255);
     }
   }
 }
