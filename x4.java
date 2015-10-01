@@ -2,7 +2,7 @@ int r,g,b;
 float buttonX=200, buttonY=250, buttonW=80, buttonH=60;
 int counter=0;
 
-//// SETUP:  size only.  Also set colors.
+//size and colors
 void setup() {
   size( 500, 500 );
   reset();
@@ -18,13 +18,13 @@ void draw() {
   fill(255,110,0);
   text( "Change", width/2-20, height/2+5 );
 }
-// Draw the button.
+// Button.
 void showButton( float x, float y, float w, float h ) {
   fill( 0,0,255 );
   rectMode(CENTER);
   rect ( width/2,height/2, w,h );
 }
-/// HANDLERS:  keys & click
+//keys & click
 void keyPressed() {
   if (key == 'q') exit();
   if (key == 'r') reset();
