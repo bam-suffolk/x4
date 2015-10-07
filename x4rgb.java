@@ -3,6 +3,9 @@
 int r,g,b;
 float button1X=100, button1Y=100, button1W=80, button1H=40;
 int counter=0;
+int score=0;
+
+
 
 //// SETUP:  size only.  Also set colors.
 void setup() {
@@ -10,17 +13,25 @@ void setup() {
   reset();
 }
 void reset() {
-  r=  100;
+  r=  0;
   g=  200;
   b=  250;
 }
 
 
-//// NEXT:  button only.
+//// NEXT:  button and SCORE.
 void draw() {
+ 
   background( r,g,b );
   showButton( button1X, button1Y, button1W, button1H );
+   fill(0);
+  rect(50,400,200,30);
+  fill(255);
+  text("SCORE", 60,410);
+  
+  
   fill(100,0,0);
+  
   text( "Click me!", button1X+button1W/4, button1Y+button1H*2/3 );
 }
 // Draw the button.
@@ -37,9 +48,9 @@ void keyPressed() {
 void mousePressed() {
   if ( hit( mouseX,mouseY, 100,100, 50,50 ) ) {
     counter=  counter+1;
-    if (counter % 2 > 0) {
-      r=  255;
-      g=  50;
+    if (counter % 25 > 0) {
+      r=  10+r;
+      g=  20;
       b=  0;
     } else {
       reset();
@@ -47,9 +58,10 @@ void mousePressed() {
   }
 }
 
+
 //// OTHER METHODS:  detect "hit"
 // Return true if "near"
-boolean hit( float x1, float y1, float x2, float y2, float w, float h ) {
+boolean hit( float x1, float y1, float x2, float y2, float w, float h ) {score=score+10 ;
   boolean result;
 
   // +++++ STUB ALWAYS RETURNS TRUE!
@@ -58,6 +70,9 @@ boolean hit( float x1, float y1, float x2, float y2, float w, float h ) {
   } else {
     result=false;
   }
+  fill(255);
+print(score);
 
   return result;
+
 }
