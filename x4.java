@@ -1,49 +1,66 @@
-//// Exercise 4:  click button to change background.
+//Drake
+//Button and Score
 
-int r,g,b;
-float button1X=100, button1Y=100, button1W=80, button1H=40;
+float r,g,b;
+float buttonX=200, buttonY=250, buttonW=80, buttonH=60;
 int counter=0;
+int score = 0;
 
-//// SETUP:  size only.  Also set colors.
+//size and colors
 void setup() {
-  size( 640, 480 );
+  size( 500, 500,P3D );
   reset();
+  noStroke();
+  rectMode(CENTER);
 }
 void reset() {
-  r=  100;
-  g=  200;
-  b=  250;
+  r=  255;
+  g=  255;
+  b=  0;
 }
-
-
-//// NEXT:  button only.
 void draw() {
   background( r,g,b );
-  showButton( button1X, button1Y, button1W, button1H );
-  fill(100,0,0);
-  text( "Click me!", button1X+button1W/4, button1Y+button1H*2/3 );
+  showButton( buttonX, buttonY, buttonW, buttonH );
+  fill(255,110,0);
+  textSize(20);
+  text( "Change", width/2-35, height/2+5 );
+  float dirY = (mouseY / float(height) - 0.5) * 2;
+  float dirX = (mouseX / float(width) - 0.5) * 3;
+   directionalLight(204, 204, 204, -dirX, -dirY, -1);
+   translate(250,100,0); 
+   fill(255); 
+   sphere(30);
+   fill(255,110,0);
+   sphere(50);
+   fill(255);
+   text("SCORE",150,450);
 }
-// Draw the button.
+// Button.
 void showButton( float x, float y, float w, float h ) {
-  fill( 255,255,0 );
-  rect ( x,y, w,h );
+  fill( 0,0,255 );
+  rect ( width/2,height/2, w,h );
 }
 
-//// HANDLERS:  keys & click
+//keys & click
 void keyPressed() {
   if (key == 'q') exit();
   if (key == 'r') reset();
 }
 void mousePressed() {
-  if ( hit( mouseX,mouseY, 100,100, 50,50 ) ) {
+  if ( hit( mouseX,mouseY, width/2,height/2, 40,30 ) ) {
     counter=  counter+1;
     if (counter % 2 > 0) {
-      r=  255;
-      g=  50;
-      b=  0;
+      r=  random(255);
+      g=  random(255);
+      b=  random(255);
     } else {
-      reset();
+      r=  random(255);
+      g=  random(255);
+      b=  random(255);
     }
+    if (hit( mouseX,mouseY,buttonX,buttonY,buttonW,buttonH)){
+    score= score+10;
+  }
   }
 }
 
