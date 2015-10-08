@@ -1,6 +1,10 @@
+//Drake
+//Button and Score
+
 float r,g,b;
 float buttonX=200, buttonY=250, buttonW=80, buttonH=60;
 int counter=0;
+int score = 0;
 
 //size and colors
 void setup() {
@@ -19,7 +23,7 @@ void draw() {
   showButton( buttonX, buttonY, buttonW, buttonH );
   fill(255,110,0);
   textSize(20);
-  text( "Change ^", width/2-37, height/2+70 );
+  text( "Change", width/2-35, height/2+5 );
   float dirY = (mouseY / float(height) - 0.5) * 2;
   float dirX = (mouseX / float(width) - 0.5) * 3;
    directionalLight(204, 204, 204, -dirX, -dirY, -1);
@@ -28,12 +32,15 @@ void draw() {
    sphere(30);
    fill(255,110,0);
    sphere(50);
+   fill(255);
+   text("SCORE",150,450);
 }
 // Button.
 void showButton( float x, float y, float w, float h ) {
   fill( 0,0,255 );
   rect ( width/2,height/2, w,h );
 }
+
 //keys & click
 void keyPressed() {
   if (key == 'q') exit();
@@ -51,6 +58,9 @@ void mousePressed() {
       g=  random(255);
       b=  random(255);
     }
+    if (hit( mouseX,mouseY,buttonX,buttonY,buttonW,buttonH)){
+    score= score+10;
+  }
   }
 }
 
